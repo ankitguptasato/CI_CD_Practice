@@ -22,3 +22,6 @@ jobs:
 
       - name: Run app
         run: npm start
+
+      - name: Build Docker Image
+        run: docker built -t my-app .
