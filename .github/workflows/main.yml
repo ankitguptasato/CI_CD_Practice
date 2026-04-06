@@ -10,7 +10,7 @@ jobs:
 
     steps:
       - name: Checkout code
-     		   uses: actions/checkout@v3
+        uses: actions/checkout@v3
       
-     		-name: Print message
-        	run: echo "CI/CD is running"
+      -name: Print message
+        run: echo "CI/CD is running"
