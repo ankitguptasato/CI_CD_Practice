@@ -9,5 +9,8 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Print message
-        run: echo "CI/CD is running"
+      - name: Checkout code
+     		   uses: actions/checkout@v3
+      
+     		-name: Print message
+        	run: echo "CI/CD is running"
