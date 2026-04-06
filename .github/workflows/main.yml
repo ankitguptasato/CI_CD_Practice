@@ -2,15 +2,23 @@ name: Basic CI pipeline
 
 on:
   push:
-    branches: ["dev"]
+    branches: ["main"]
 
 jobs:
-  first-job:
+  build:
     runs-on: ubuntu-latest
 
     steps:
       - name: Checkout code
         uses: actions/checkout@v3
 
-      - name: Print message
-        run: echo "CI/CD is running Hello"
+      - name: Install Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: 18
+
+      - name: Install dependencies
+        run: npm install
+
+      - name: Run app
+        run: npm start
