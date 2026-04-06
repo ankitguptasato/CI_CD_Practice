@@ -1,0 +1,13 @@
+name: Basic CI pipeline
+
+on:
+  push:
+    branches: ["main"]
+
+jobs:
+  first-job:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Print message
+        run: echo "CI/CD is running"
