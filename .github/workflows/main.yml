@@ -34,3 +34,15 @@ jobs:
 
       - name: Push Docker Image
         run: docker push ${{ secrets.DOCKER_USERNAME }}/my-app:latest
+
+      - name: Deploy to EC2
+  run: |
+    echo "$EC2_SSH_KEY" > key.pem
+    chmod 600 key.pem
+
+    ssh -o StrictHostKeyChecking=no -i key.pem ubuntu@$EC2_HOST "
+      docker pull ankitsato/my-app &&
+      docker stop my-app || true &&
+      docker rm my-app || true &&
+      docker run -d -p 3000:3000 --name my-app ankit-sato/my-app
+    "
